@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL AUTO_INCREMENT</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0e0e0f;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #eafaf1;
+      border-left: 6px solid #0b9cfd;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #0a98f7;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0a94f1;
+      color: white;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+
+    tbody tr:hover {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SQL AUTO_INCREMENT</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p>The <strong>AUTO_INCREMENT</strong> attribute in SQL is used to generate a unique number automatically when a new record is inserted into a table.</p>
+    <p>This is commonly used for primary key columns so that each row gets a unique identifier without manually entering a value.</p>
+    <p>It is supported in databases like MySQL and MariaDB. In SQL Server, the equivalent is <code>IDENTITY</code>, and in PostgreSQL, you can use <code>SERIAL</code>.</p>
+  </section>
+
+  <section>
+    <h2>📘 Syntax</h2>
+    <pre><code>CREATE TABLE table_name (
+  column_name INT AUTO_INCREMENT,
+  ...
+  PRIMARY KEY (column_name)
+);</code></pre>
+
+    <p>To insert values while using AUTO_INCREMENT:</p>
+    <pre><code>INSERT INTO table_name (column2, column3, ...)
+VALUES (value2, value3, ...);</code></pre>
+  </section>
+
+  <section>
+    <h2>🧾 Example: AUTO_INCREMENT on student_id</h2>
+    <pre><code>CREATE TABLE students (
+  student_id INT AUTO_INCREMENT,
+  name VARCHAR(100),
+  course VARCHAR(50),
+  PRIMARY KEY (student_id)
+);</code></pre>
+
+    <h3>✅ Explanation</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Column</th>
+          <th>Attribute</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>student_id</td><td>AUTO_INCREMENT, PRIMARY KEY</td><td>Automatically increases with each new row</td></tr>
+        <tr><td>name</td><td>VARCHAR</td><td>Name of the student</td></tr>
+        <tr><td>course</td><td>VARCHAR</td><td>Course the student is enrolled in</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <p>Inserting records without specifying student_id:</p>
+    <pre><code>INSERT INTO students (name, course)
+VALUES ('Rohit Sharma', 'BCA'),
+       ('Ananya Verma', 'BBA');</code></pre>
+
+    <p>The database will automatically assign unique IDs:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>student_id</th>
+          <th>name</th>
+          <th>course</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Rohit Sharma</td><td>BCA</td></tr>
+        <tr><td>2</td><td>Ananya Verma</td><td>BBA</td></tr>
+      </tbody>
+    </table>
+
+    <p>This eliminates the need to manually manage unique values for the primary key.</p>
+  </section>
+
+</body>
+</html>

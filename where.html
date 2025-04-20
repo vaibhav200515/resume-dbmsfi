@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL WHERE Clause</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0a0a0a;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #eafaf1;
+      border-left: 6px solid #d35400;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #d35400;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #d35400;
+      color: white;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SQL WHERE Clause</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p>The <strong>WHERE</strong> clause in SQL is used to filter records that meet a specific condition.</p>
+    <p>It is used with <code>SELECT</code>, <code>UPDATE</code>, <code>DELETE</code>, and other SQL statements to retrieve or modify only the rows that satisfy the given criteria.</p>
+    <p>Without <code>WHERE</code>, commands affect or return all rows in the table, which can be risky or inefficient.</p>
+  </section>
+
+  <section>
+    <h2>📘 Syntax</h2>
+    <pre><code>SELECT column1, column2, ...
+FROM table_name
+WHERE condition;</code></pre>
+  </section>
+
+  <section>
+    <h2>🧾 Example: Select students older than 18</h2>
+    <pre><code>SELECT * FROM students WHERE age &gt; 18;</code></pre>
+
+    <h3>✅ Explanation</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Clause</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>SELECT *</td><td>Selects all columns from the table</td></tr>
+        <tr><td>FROM students</td><td>Specifies the source table</td></tr>
+        <tr><td>WHERE age &gt; 18</td><td>Filters and shows only students with age greater than 18</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <p>Assuming the table contains:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>student_id</th>
+          <th>name</th>
+          <th>age</th>
+          <th>course</th>
+          <th>admission_date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>101</td>
+          <td>Rohit Sharma</td>
+          <td>20</td>
+          <td>BCA</td>
+          <td>2024-07-15</td>
+        </tr>
+        <tr>
+          <td>102</td>
+          <td>Ananya Verma</td>
+          <td>17</td>
+          <td>BBA</td>
+          <td>2024-06-10</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>The query will return:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>student_id</th>
+          <th>name</th>
+          <th>age</th>
+          <th>course</th>
+          <th>admission_date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>101</td>
+          <td>Rohit Sharma</td>
+          <td>20</td>
+          <td>BCA</td>
+          <td>2024-07-15</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</body>
+</html>

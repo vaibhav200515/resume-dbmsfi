@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL PRIMARY KEY Constraint</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #090909;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #eafaf1;
+      border-left: 6px solid #0698f9;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #089bfc;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0795f4;
+      color: white;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+
+    tbody tr:hover {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SQL PRIMARY KEY Constraint</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p>The <strong>PRIMARY KEY</strong> constraint uniquely identifies each record in a table.</p>
+    <p>It ensures that the values in the specified column(s) are <strong>unique</strong> and <strong>not null</strong>.</p>
+    <p>Each table can have only one PRIMARY KEY, which can consist of a single column or a combination of columns (composite key).</p>
+  </section>
+
+  <section>
+    <h2>📘 Syntax</h2>
+    <pre><code>CREATE TABLE table_name (
+  column1 datatype PRIMARY KEY,
+  column2 datatype,
+  ...
+);</code></pre>
+    <p>To define a PRIMARY KEY on multiple columns:</p>
+    <pre><code>CREATE TABLE table_name (
+  column1 datatype,
+  column2 datatype,
+  ...
+  PRIMARY KEY (column1, column2)
+);</code></pre>
+    <p>You can also add a PRIMARY KEY to an existing table:</p>
+    <pre><code>ALTER TABLE table_name
+ADD PRIMARY KEY (column_name);</code></pre>
+  </section>
+
+  <section>
+    <h2>🧾 Example: Set student_id as PRIMARY KEY</h2>
+    <pre><code>CREATE TABLE students (
+  student_id INT PRIMARY KEY,
+  name VARCHAR(100),
+  age INT
+);</code></pre>
+
+    <h3>✅ Explanation</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Column</th>
+          <th>Constraint</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>student_id</td><td>PRIMARY KEY</td><td>Must be unique and not null</td></tr>
+        <tr><td>name</td><td>None</td><td>Optional field</td></tr>
+        <tr><td>age</td><td>None</td><td>Optional field</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <p>The table is created successfully. Now try inserting data:</p>
+    <pre><code>INSERT INTO students (student_id, name, age)
+VALUES (1, 'Ravi Kumar', 18);</code></pre>
+
+    <pre><code>INSERT INTO students (student_id, name, age)
+VALUES (1, 'Priya Singh', 20);</code></pre>
+
+    <p>The second insert will fail with an error:</p>
+    <pre><code>ERROR: Duplicate entry '1' for key 'PRIMARY'</code></pre>
+
+    <p>This ensures each student_id is unique and not null.</p>
+  </section>
+
+</body>
+</html>

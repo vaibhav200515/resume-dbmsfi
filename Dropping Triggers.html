@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dropping Triggers in PL/SQL</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #121213;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #eafaf1;
+      border-left: 6px solid #0597f8;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #059bff;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0697f8;
+      color: white;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+
+    tbody tr:hover {
+      background-color: #f9f9f9;
+    }
+
+    code {
+      background: #f4f4f4;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Dropping Triggers in PL/SQL</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p>In PL/SQL, a trigger can be removed from the database using the <strong>DROP TRIGGER</strong> statement. This is useful when a trigger is no longer needed, or if it needs to be replaced or modified with a new version.</p>
+    <p>Only the user who created the trigger or a user with appropriate privileges (like a DBA) can drop a trigger.</p>
+  </section>
+
+  <section>
+    <h2>📘 Syntax</h2>
+    <pre><code>DROP TRIGGER trigger_name;</code></pre>
+    <p><code>trigger_name</code>: Name of the trigger to be dropped.</p>
+  </section>
+
+  <section>
+    <h2>🧾 Example: Drop a Trigger</h2>
+    <pre><code>DROP TRIGGER trg_before_insert;</code></pre>
+
+    <h3>✅ Explanation</h3>
+    <p>This command deletes the trigger named <code>trg_before_insert</code> from the database.</p>
+  </section>
+
+  <section>
+    <h2>⚠️ Important Notes</h2>
+    <ul>
+      <li>If you try to drop a trigger that does not exist, Oracle will return an error.</li>
+      <li>Use the <code>IF EXISTS</code> clause in some databases like MySQL to avoid errors.</li>
+      <li>After dropping a trigger, it cannot be recovered unless it is recreated.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🔍 Verifying Trigger Deletion</h2>
+    <p>To check whether a trigger exists or was successfully dropped, query the <code>USER_TRIGGERS</code> data dictionary view:</p>
+    <pre><code>SELECT trigger_name FROM user_triggers WHERE trigger_name = 'TRG_BEFORE_INSERT';</code></pre>
+    <p>If the trigger was dropped, this query will return no results.</p>
+  </section>
+
+</body>
+</html>

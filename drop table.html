@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL DROP TABLE</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0e0e0f;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #eafaf1;
+      border-left: 6px solid #0799fa;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #049aff;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #089afc;
+      color: white;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+
+    tbody tr:hover {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SQL DROP TABLE</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p>The <strong>DROP TABLE</strong> statement in SQL is used to permanently delete an existing table and all of its data from the database.</p>
+    <p>Once a table is dropped, it cannot be recovered unless a backup is available. It is important to use this command with caution.</p>
+    <p>This command removes the table structure, all records, indexes, and constraints associated with it.</p>
+  </section>
+
+  <section>
+    <h2>📘 Syntax</h2>
+    <pre><code>DROP TABLE table_name;</code></pre>
+  </section>
+
+  <section>
+    <h2>🧾 Example: Drop the "students" table</h2>
+    <pre><code>DROP TABLE students;</code></pre>
+
+    <h3>✅ Explanation</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Clause</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>DROP TABLE</td><td>Specifies the operation to delete a table</td></tr>
+        <tr><td>students</td><td>Name of the table to be deleted</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <p>After executing the command, SQL will remove the "students" table. You may see a message like:</p>
+    <pre><code>Table dropped successfully.</code></pre>
+
+    <p>Trying to access the table afterward will result in an error:</p>
+    <pre><code>ERROR: relation "students" does not exist</code></pre>
+
+    <p>✔️ Always ensure you no longer need the table or have a backup before using this command.</p>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL IN Operator</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #080808;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #e8f8f5;
+      border-left: 6px solid #1abc9c;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #1abc9c;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #1abc9c;
+      color: white;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SQL IN Operator</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p>The <strong>IN</strong> operator in SQL is used to specify multiple possible values for a column in the <code>WHERE</code> clause.</p>
+    <p>Instead of using multiple OR conditions, <code>IN</code> provides a cleaner and more efficient way to check if a value exists in a list.</p>
+    <p>It's useful when you want to filter results to only include specific values.</p>
+  </section>
+
+  <section>
+    <h2>📘 Syntax</h2>
+    <pre><code>SELECT column1, column2, ...
+FROM table_name
+WHERE column_name IN (value1, value2, ...);</code></pre>
+  </section>
+
+  <section>
+    <h2>🧾 Example: Select students from specific courses</h2>
+    <pre><code>SELECT * FROM students
+WHERE course IN ('BCA', 'BBA');</code></pre>
+
+    <h3>✅ Explanation</h3>
+    <p>This query returns all students who are enrolled in either the BCA or BBA course.</p>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>student_id</th>
+          <th>name</th>
+          <th>age</th>
+          <th>course</th>
+          <th>admission_date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>101</td>
+          <td>Rohit Sharma</td>
+          <td>20</td>
+          <td>BCA</td>
+          <td>2024-07-15</td>
+        </tr>
+        <tr>
+          <td>104</td>
+          <td>Riya Mehta</td>
+          <td>19</td>
+          <td>BBA</td>
+          <td>2024-06-20</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</body>
+</html>

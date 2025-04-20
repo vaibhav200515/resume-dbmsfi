@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL CREATE TABLE</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #101010;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #eafaf1;
+      border-left: 6px solid #0798f9;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #0794f3;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0798f9;
+      color: white;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+
+    tbody tr:hover {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SQL CREATE TABLE</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p>The <strong>CREATE TABLE</strong> statement in SQL is used to create a new table in a database.</p>
+    <p>Each table consists of columns with specified names and data types. You can also define constraints like <strong>PRIMARY KEY</strong>, <strong>NOT NULL</strong>, <strong>UNIQUE</strong>, etc.</p>
+    <p>Tables are fundamental components of any relational database and hold the actual data in rows and columns.</p>
+  </section>
+
+  <section>
+    <h2>📘 Syntax</h2>
+    <pre><code>CREATE TABLE table_name (
+  column1 datatype constraint,
+  column2 datatype constraint,
+  ...
+);</code></pre>
+  </section>
+
+  <section>
+    <h2>🧾 Example: Create a "students" table</h2>
+    <pre><code>CREATE TABLE students (
+  student_id INT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  age INT,
+  course VARCHAR(50),
+  admission_date DATE
+);</code></pre>
+
+    <h3>✅ Explanation</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Column</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>student_id INT PRIMARY KEY</td><td>Defines a unique student ID as the primary key</td></tr>
+        <tr><td>name VARCHAR(100) NOT NULL</td><td>Stores the student's name (cannot be null)</td></tr>
+        <tr><td>age INT</td><td>Stores the student's age</td></tr>
+        <tr><td>course VARCHAR(50)</td><td>Stores the course name</td></tr>
+        <tr><td>admission_date DATE</td><td>Stores the admission date</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <p>When the command is executed successfully, the system returns a message like:</p>
+    <pre><code>Table created successfully.</code></pre>
+
+    <p>You can verify it using:</p>
+    <pre><code>DESCRIBE students;</code></pre>
+
+    <p>Which will output:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Null</th>
+          <th>Key</th>
+          <th>Default</th>
+          <th>Extra</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>student_id</td><td>INT</td><td>NO</td><td>PRI</td><td>NULL</td><td></td></tr>
+        <tr><td>name</td><td>VARCHAR(100)</td><td>NO</td><td></td><td>NULL</td><td></td></tr>
+        <tr><td>age</td><td>INT</td><td>YES</td><td></td><td>NULL</td><td></td></tr>
+        <tr><td>course</td><td>VARCHAR(50)</td><td>YES</td><td></td><td>NULL</td><td></td></tr>
+        <tr><td>admission_date</td><td>DATE</td><td>YES</td><td></td><td>NULL</td><td></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</body>
+</html>

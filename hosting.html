@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL Hosting</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0c0c0c;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #fef9e7;
+      border-left: 6px solid #f39c12;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #f39c12;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f39c12;
+      color: white;
+    }
+
+    tbody tr:hover {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SQL Hosting</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p><strong>SQL Hosting</strong> refers to storing and managing SQL databases on servers provided by a hosting provider.</p>
+    <p>This allows applications and users to access the database remotely via the internet, making it suitable for web development, cloud apps, and enterprise systems.</p>
+    <p>Many hosting services offer MySQL, PostgreSQL, SQL Server, or MariaDB databases as part of their packages.</p>
+  </section>
+
+  <section>
+    <h2>📘 Common Hosting Options</h2>
+    <ul>
+      <li><strong>Shared Hosting</strong>: Multiple users share the same server and database resources.</li>
+      <li><strong>VPS (Virtual Private Server)</strong>: Dedicated environment with better performance and customization.</li>
+      <li><strong>Cloud SQL</strong>: Managed cloud services like Amazon RDS, Google Cloud SQL, or Azure SQL.</li>
+      <li><strong>Dedicated Server</strong>: Complete control over the physical server and database installation.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🧾 Steps to Host a SQL Database</h2>
+    <ol>
+      <li>Choose a hosting provider (e.g., Hostinger, Bluehost, AWS, Heroku, DigitalOcean).</li>
+      <li>Sign up and create a database from the hosting dashboard.</li>
+      <li>Set user permissions and allow remote connections.</li>
+      <li>Use tools like phpMyAdmin or command-line MySQL client to import/export databases.</li>
+      <li>Connect your application using the database hostname, username, and password.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>🔗 Example: MySQL Connection String (PHP)</h2>
+    <pre><code>$conn = new mysqli("sql.examplehost.com", "db_user", "db_pass", "my_database");
+
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+echo "Connected successfully";</code></pre>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <p>If everything is correctly configured, the application will successfully connect to the remote SQL database and start performing queries.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Step</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Create Database</td>
+          <td>✅ Success</td>
+        </tr>
+        <tr>
+          <td>Configure User Access</td>
+          <td>✅ Done</td>
+        </tr>
+        <tr>
+          <td>Connect via App</td>
+          <td>✅ Connected</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</body>
+</html>

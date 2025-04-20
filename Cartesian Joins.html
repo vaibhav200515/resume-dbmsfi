@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL Cartesian Join</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #141414;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #eafaf1;
+      border-left: 6px solid #0a97f5;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #0995f3;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0b9bfb;
+      color: white;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+
+    tbody tr:hover {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SQL Cartesian Join</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p>A <strong>Cartesian Join</strong> (also known as a cross join) returns the Cartesian product of two tables.</p>
+    <p>This means that it will return all possible combinations of rows from the first table with rows from the second table.</p>
+    <p>It usually happens when there is no join condition specified in the query.</p>
+  </section>
+
+  <section>
+    <h2>📘 Syntax</h2>
+    <pre><code>SELECT * 
+FROM table1, table2;</code></pre>
+  </section>
+
+  <section>
+    <h2>🧾 Example: Cartesian Join between "students" and "courses"</h2>
+    <pre><code>SELECT students.name, courses.course_name
+FROM students, courses;</code></pre>
+
+    <h3>✅ Explanation</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Clause</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>students.name</td><td>Selects the name of the student</td></tr>
+        <tr><td>courses.course_name</td><td>Selects the course name</td></tr>
+        <tr><td>students, courses</td><td>Specifies both tables without any join condition</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <p>Assume the following data in the tables:</p>
+
+    <h3>students table</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Alice</td></tr>
+        <tr><td>2</td><td>Bob</td></tr>
+      </tbody>
+    </table>
+
+    <h3>courses table</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>course_id</th>
+          <th>course_name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>101</td><td>Math</td></tr>
+        <tr><td>102</td><td>Science</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Result (Cartesian Product)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>name</th>
+          <th>course_name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Alice</td><td>Math</td></tr>
+        <tr><td>Alice</td><td>Science</td></tr>
+        <tr><td>Bob</td><td>Math</td></tr>
+        <tr><td>Bob</td><td>Science</td></tr>
+      </tbody>
+    </table>
+
+    <p>As shown above, each student is paired with each course, resulting in 2 × 2 = 4 rows.</p>
+  </section>
+
+</body>
+</html>

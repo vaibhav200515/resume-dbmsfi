@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL NOT NULL Constraint</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #080808;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #eafaf1;
+      border-left: 6px solid #0b9cfd;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #0699fb;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0896f5;
+      color: white;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+
+    tbody tr:hover {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SQL NOT NULL Constraint</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p>The <strong>NOT NULL</strong> constraint in SQL ensures that a column cannot have a NULL value.</p>
+    <p>This means that every time you insert a record into the table, you must provide a value for that column.</p>
+    <p>It is commonly used to make sure important fields like names, IDs, or dates are always filled out.</p>
+  </section>
+
+  <section>
+    <h2>📘 Syntax</h2>
+    <pre><code>CREATE TABLE table_name (
+  column1 datatype NOT NULL,
+  column2 datatype,
+  ...
+);</code></pre>
+    <p>You can also add NOT NULL to an existing column:</p>
+    <pre><code>ALTER TABLE table_name
+MODIFY column_name datatype NOT NULL;</code></pre>
+  </section>
+
+  <section>
+    <h2>🧾 Example: Apply NOT NULL on "name" column</h2>
+    <pre><code>CREATE TABLE students (
+  student_id INT,
+  name VARCHAR(100) NOT NULL,
+  age INT
+);</code></pre>
+
+    <h3>✅ Explanation</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Column</th>
+          <th>Constraint</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>student_id</td><td>None</td><td>Optional field</td></tr>
+        <tr><td>name</td><td>NOT NULL</td><td>Cannot be empty or NULL</td></tr>
+        <tr><td>age</td><td>None</td><td>Optional field</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <p>The table will be created successfully. Now, try inserting this:</p>
+    <pre><code>INSERT INTO students (student_id, name, age)
+VALUES (1, NULL, 18);</code></pre>
+    <p>This will result in an error:</p>
+    <pre><code>ERROR: Column 'name' cannot be null</code></pre>
+
+    <p>But the following will work:</p>
+    <pre><code>INSERT INTO students (student_id, name, age)
+VALUES (1, 'Ravi Kumar', 18);</code></pre>
+  </section>
+
+</body>
+</html>

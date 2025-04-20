@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PL/SQL Operator Precedence</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #050505;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #eafaf1;
+      border-left: 6px solid #079bfe;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #0696f6;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0493f3;
+      color: white;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+
+    tbody tr:hover {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>PL/SQL Operator Precedence</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p>In PL/SQL, expressions can include multiple operators. The <strong>operator precedence</strong> determines the order in which these operators are evaluated.</p>
+    <p>Understanding operator precedence ensures that complex expressions are calculated as expected, especially when arithmetic, comparison, and logical operators are used together.</p>
+  </section>
+
+  <section>
+    <h2>📘 Precedence Order (Highest to Lowest)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Operator(s)</th>
+          <th>Type</th>
+          <th>Associativity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><code>**</code></td><td>Exponentiation</td><td>Right to Left</td></tr>
+        <tr><td><code>+, - (Unary)</code></td><td>Sign</td><td>Right to Left</td></tr>
+        <tr><td><code>*, /</code></td><td>Multiplication/Division</td><td>Left to Right</td></tr>
+        <tr><td><code>+, -</code></td><td>Addition/Subtraction</td><td>Left to Right</td></tr>
+        <tr><td><code>||</code></td><td>Concatenation</td><td>Left to Right</td></tr>
+        <tr><td><code>=, !=, <>, <, >, <=, >=</code></td><td>Comparison</td><td>Left to Right</td></tr>
+        <tr><td><code>IS [NOT] NULL, LIKE, IN, BETWEEN</code></td><td>Logical comparison</td><td>Left to Right</td></tr>
+        <tr><td><code>NOT</code></td><td>Logical NOT</td><td>Right to Left</td></tr>
+        <tr><td><code>AND</code></td><td>Logical AND</td><td>Left to Right</td></tr>
+        <tr><td><code>OR</code></td><td>Logical OR</td><td>Left to Right</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>🧾 Example</h2>
+    <pre><code>DECLARE
+  result NUMBER;
+BEGIN
+  result := 10 + 2 * 3; -- Multiplication happens before addition
+  DBMS_OUTPUT.PUT_LINE('Result: ' || result); -- Outputs 16
+END;
+/</code></pre>
+
+    <h3>✅ Explanation</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Expression</th>
+          <th>Evaluated As</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><code>10 + 2 * 3</code></td><td><code>10 + (2 * 3) = 16</code></td></tr>
+      </tbody>
+    </table>
+    <p>Multiplication has higher precedence than addition, so <code>2 * 3</code> is calculated first.</p>
+  </section>
+
+  <section>
+    <h2>💡 Tip</h2>
+    <p>Use parentheses <code>( )</code> to explicitly define the desired evaluation order, especially when mixing different types of operators. This improves both accuracy and readability.</p>
+    <pre><code>result := (10 + 2) * 3; -- Now result is 36</code></pre>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <pre><code>
+Result: 16
+    </code></pre>
+    <p>This output confirms that operator precedence rules were followed correctly during expression evaluation.</p>
+  </section>
+
+</body>
+</html>

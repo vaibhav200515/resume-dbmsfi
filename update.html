@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL UPDATE Command</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #060606;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #fff9e6;
+      border-left: 6px solid #f39c12;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #f39c12;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f39c12;
+      color: white;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SQL UPDATE Command</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p>The <strong>UPDATE</strong> command in SQL is used to modify existing records in a table.</p>
+    <p>You can update one or multiple columns for a specific row or for multiple rows that meet a given condition using the <code>WHERE</code> clause.</p>
+    <p>If you omit the <code>WHERE</code> clause, all rows in the table will be updated, so use it carefully.</p>
+  </section>
+
+  <section>
+    <h2>📘 Syntax</h2>
+    <pre><code>-- Update one column
+UPDATE table_name
+SET column1 = value1
+WHERE condition;
+
+-- Update multiple columns
+UPDATE table_name
+SET column1 = value1,
+    column2 = value2
+WHERE condition;</code></pre>
+  </section>
+
+  <section>
+    <h2>🧾 Example: Update a student's course</h2>
+    <pre><code>UPDATE students
+SET course = 'MBA'
+WHERE student_id = 103;</code></pre>
+
+    <h3>✅ Explanation</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Part</th>
+          <th>Meaning</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>UPDATE students</td><td>Target the <code>students</code> table</td></tr>
+        <tr><td>SET course = 'MBA'</td><td>Change the course column to 'MBA'</td></tr>
+        <tr><td>WHERE student_id = 103</td><td>Only update the record with student_id 103</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <p>When executed, SQL returns:</p>
+    <pre>1 row(s) affected.</pre>
+
+    <h3>📋 Updated Table View</h3>
+    <p>Before:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>student_id</th>
+          <th>name</th>
+          <th>course</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>103</td><td>Vikram Patel</td><td>BBA</td></tr>
+      </tbody>
+    </table>
+
+    <p>After:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>student_id</th>
+          <th>name</th>
+          <th>course</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>103</td><td>Vikram Patel</td><td>MBA</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</body>
+</html>

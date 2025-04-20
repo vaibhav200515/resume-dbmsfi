@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL Comments</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #101010;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #eaf2f8;
+      border-left: 6px solid #0a96f4;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #0999fa;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0b95f1;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SQL Comments</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p><strong>Comments</strong> in SQL are used to explain and clarify your queries or code. They are ignored by the SQL engine and do not affect query execution.</p>
+    <p>They are helpful for documentation, debugging, or simply making code easier to understand for others (or yourself later).</p>
+    <p>SQL supports both single-line and multi-line comments, depending on the database system.</p>
+  </section>
+
+  <section>
+    <h2>📘 Types of Comments</h2>
+    <ul>
+      <li><strong>Single-line comment:</strong> Starts with <code>--</code></li>
+      <li><strong>Multi-line comment:</strong> Enclosed between <code>/*</code> and <code>*/</code></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🧾 Example 1: Single-line Comment</h2>
+    <pre><code>-- This query selects all columns from students table
+SELECT * FROM students;</code></pre>
+  </section>
+
+  <section>
+    <h2>🧾 Example 2: Multi-line Comment</h2>
+    <pre><code>/*
+  This query inserts a new student into the table.
+  We are providing values for all columns.
+*/
+INSERT INTO students (student_id, name, age, course, admission_date)
+VALUES (105, 'Sneha', 21, 'B.Com', '2024-08-10');</code></pre>
+  </section>
+
+  <section>
+    <h2>✅ Notes</h2>
+    <ul>
+      <li>Always use comments to describe the logic behind complex queries.</li>
+      <li>Use multi-line comments when explanations require more detail.</li>
+      <li>Too many unnecessary comments can clutter the code, so keep them meaningful.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <p>Comments do not affect execution. The output will only show the result of the actual SQL command.</p>
+    <pre>1 row inserted.</pre>
+  </section>
+
+</body>
+</html>

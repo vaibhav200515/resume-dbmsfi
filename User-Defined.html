@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User-Defined Exceptions in PL/SQL</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #040404;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #eafaf1;
+      border-left: 6px solid #0999f9;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #059bff;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0998f8;
+      color: white;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+
+    tbody tr:hover {
+      background-color: #f9f9f9;
+    }
+
+    code {
+      background: #f4f4f4;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>User-Defined Exceptions in PL/SQL</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p>User-defined exceptions in PL/SQL are custom errors that developers define to handle specific error scenarios that are not covered by predefined exceptions.</p>
+    <p>They are explicitly declared using the <code>EXCEPTION</code> keyword and raised using the <code>RAISE</code> statement.</p>
+    <p>This allows greater control over error management, making programs more robust and easier to maintain.</p>
+  </section>
+
+  <section>
+    <h2>🛠️ Steps to Use User-Defined Exceptions</h2>
+    <ol>
+      <li><strong>Declare</strong> the exception in the <code>DECLARE</code> section.</li>
+      <li><strong>Raise</strong> the exception using the <code>RAISE</code> keyword when the condition is met.</li>
+      <li><strong>Handle</strong> the exception in the <code>EXCEPTION</code> section of the block.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>🧾 Example: Raise an exception if salary is below minimum</h2>
+    <pre><code>DECLARE
+  v_salary NUMBER := 2000;
+  e_low_salary EXCEPTION;
+BEGIN
+  IF v_salary &lt; 3000 THEN
+    RAISE e_low_salary;
+  END IF;
+  DBMS_OUTPUT.PUT_LINE('Salary is acceptable.');
+EXCEPTION
+  WHEN e_low_salary THEN
+    DBMS_OUTPUT.PUT_LINE('Error: Salary is below the minimum required.');
+END;</code></pre>
+  </section>
+
+  <section>
+    <h2>✅ Explanation</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Part</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>e_low_salary</code></td>
+          <td>User-defined exception declared in the <code>DECLARE</code> section.</td>
+        </tr>
+        <tr>
+          <td><code>RAISE e_low_salary</code></td>
+          <td>Manually triggers the exception when salary is less than 3000.</td>
+        </tr>
+        <tr>
+          <td><code>WHEN e_low_salary THEN ...</code></td>
+          <td>Handles the raised exception and displays a custom error message.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <pre><code>Error: Salary is below the minimum required.</code></pre>
+  </section>
+
+</body>
+</html>

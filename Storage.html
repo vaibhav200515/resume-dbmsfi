@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Storage for Triggers in PL/SQL</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #090909;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #eafaf1;
+      border-left: 6px solid #0496f8;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #0594f4;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0594f4;
+      color: white;
+    }
+
+    tbody tr:hover {
+      background-color: #f9f9f9;
+    }
+
+    code {
+      background: #f4f4f4;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Storage for Triggers in PL/SQL</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p>In PL/SQL, triggers are stored as database schema objects. Once created, a trigger becomes a permanent part of the database unless explicitly dropped. This storage enables triggers to automatically respond to specific events such as INSERT, UPDATE, or DELETE on a table or view.</p>
+  </section>
+
+  <section>
+    <h2>🗂️ How Triggers are Stored</h2>
+    <ul>
+      <li>Triggers are compiled objects stored in the Oracle Data Dictionary.</li>
+      <li>They are associated with the table or view they act upon.</li>
+      <li>Their definitions and status are maintained in system tables like <code>USER_TRIGGERS</code>, <code>ALL_TRIGGERS</code>, and <code>DBA_TRIGGERS</code>.</li>
+      <li>The compiled trigger code is stored in internal system tables, while metadata is exposed to users via dictionary views.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🔍 Querying Trigger Storage Information</h2>
+    <p>You can use the following query to check details of triggers stored in your schema:</p>
+    <pre><code>SELECT trigger_name, table_name, status, trigger_type
+FROM user_triggers;</code></pre>
+    <p>This displays the name, associated table, trigger type (BEFORE/AFTER), and current status (ENABLED/DISABLED).</p>
+  </section>
+
+  <section>
+    <h2>📁 Where Is Trigger Code Stored?</h2>
+    <p>The source code of a trigger can be viewed using:</p>
+    <pre><code>SELECT trigger_body 
+FROM user_triggers 
+WHERE trigger_name = 'TRG_NAME';</code></pre>
+    <p>This will show the PL/SQL block that defines the trigger logic.</p>
+  </section>
+
+  <section>
+    <h2>⚠️ Notes on Storage and Management</h2>
+    <ul>
+      <li>Stored triggers increase schema complexity but automate essential logic.</li>
+      <li>Triggers remain in the database even after the associated table is dropped, but are marked invalid.</li>
+      <li>It is important to maintain and document triggers to avoid unintended behavior during DML operations.</li>
+    </ul>
+  </section>
+
+</body>
+</html>

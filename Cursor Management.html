@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cursor Management in PL/SQL</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0d0d0d;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #eafaf1;
+      border-left: 6px solid #0699fb;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #0597f9;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0699fb;
+      color: white;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+
+    tbody tr:hover {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Cursor Management in PL/SQL</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p>In PL/SQL, a <strong>cursor</strong> is a pointer to the context area that stores the result set of a query. Cursors allow row-by-row processing of SQL statements.</p>
+    <p>There are two types of cursors:</p>
+    <ul>
+      <li><strong>Implicit Cursors</strong>: Automatically created by PL/SQL for single-row queries like INSERT, UPDATE, DELETE, or SELECT INTO.</li>
+      <li><strong>Explicit Cursors</strong>: Created by the programmer to handle queries that return more than one row.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🧠 Cursor Operations</h2>
+    <p>Managing an explicit cursor involves four steps:</p>
+    <ul>
+      <li><strong>1. Declare</strong> the cursor</li>
+      <li><strong>2. Open</strong> the cursor</li>
+      <li><strong>3. Fetch</strong> rows from the cursor</li>
+      <li><strong>4. Close</strong> the cursor</li>
+    </ul>
+
+    <h3>✅ Example: Using an Explicit Cursor</h3>
+    <pre><code>DECLARE
+  CURSOR c_dept IS
+    SELECT deptno, dname FROM dept;
+  v_deptno dept.deptno%TYPE;
+  v_dname dept.dname%TYPE;
+BEGIN
+  OPEN c_dept;
+  LOOP
+    FETCH c_dept INTO v_deptno, v_dname;
+    EXIT WHEN c_dept%NOTFOUND;
+    DBMS_OUTPUT.PUT_LINE('Dept No: ' || v_deptno || ', Name: ' || v_dname);
+  END LOOP;
+  CLOSE c_dept;
+END;
+/</code></pre>
+  </section>
+
+  <section>
+    <h2>📍 Implicit Cursor Example</h2>
+    <pre><code>DECLARE
+  v_total NUMBER;
+BEGIN
+  SELECT COUNT(*) INTO v_total FROM emp;
+  DBMS_OUTPUT.PUT_LINE('Total Employees: ' || v_total);
+END;
+/</code></pre>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <p>The output will display department details one row at a time, followed by the total number of employees if both examples are executed:</p>
+    <pre><code>
+Dept No: 10, Name: ACCOUNTING
+Dept No: 20, Name: RESEARCH
+Dept No: 30, Name: SALES
+Dept No: 40, Name: OPERATIONS
+Total Employees: 14
+    </code></pre>
+  </section>
+
+</body>
+</html>

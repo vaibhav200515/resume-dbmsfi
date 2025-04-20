@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Students Marks T</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 20px;
+      background-color: black;
+      background-size: cover;
+      text-align: center;
+    }
+    table {
+      width: 80%;
+      margin: auto;
+      border-collapse: collapse;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: center;
+    }
+    th {
+      background-color: #ff4000;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    tr:hover {
+      background-color: #ddd;
+    }
+    h2 {
+      color: white;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #ff1500;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    input {
+      width: 60px;
+      text-align: center;
+    }
+    .first { background-color: #ec08dc !important; }
+    .second { background-color: #09f525 !important; color: black; }
+    .third { background-color: #fd3c06 !important; }
+    .topper {
+      background-color: #ff5722 !important;
+      font-weight: bold;
+    }
+    .mark-cell {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Student Marks Table</h2>
+
+  <!-- Buttons -->
+  <button onclick="goHome()">Home</button>
+  <button onclick="highlightTop3()">Highlight Top 3</button>
+  <button onclick="highlightSubjectToppers()">Highlight Subject Toppers</button>
+
+  <table id="marksTable">
+    <thead>
+      <tr>
+        <th>Roll No</th>
+        <th>Name</th>
+        <th>DBMS</th>
+        <th>Linux</th>
+        <th>SPM</th>
+        <th>C++</th>
+        <th>Javascript</th>
+        <th>Computer Science</th>
+        <th>Average</th>
+        <th>Position</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+
+  <script>
+    const students = [
+      ['4002/23', 'Navneet Kaur'], ['4003/23', 'Gurleen Kaur Dhaliwal'], ['4005/23', 'Dhruv Nayar'],
+      ['4006/23', 'Gorav Anthwal'], ['4007/23', 'Kartik Kumar Sahu'], ['4008/23', 'Pavas Gagneja'],
+      ['4009/23', 'Kavya Negi'], ['4011/23', 'Yaman Mittal'], ['4012/23', 'Abhinav Kumar'],
+      ['4013/23', 'Priyanka Rawat'], ['4015/23', 'Karan Kamboj'], ['4016/23', 'Karan Kumar'],
+      ['4017/23', 'Priyanka'], ['4018/23', 'Bhawna'], ['4019/23', 'Rahul Garg'], ['4020/23', 'Sanju'],
+      ['4021/23', 'Hema Pandey'], ['4023/23', 'Shikhar Sunyal'], ['4024/23', 'Kirandeep Kaur'],
+      ['4025/23', 'Chirag Arora'], ['4026/23', 'Gaurav Kumar'], ['4027/23', 'Hemant Kumar'],
+      ['4028/23', 'Shruti Jaiswal'], ['4030/23', 'Karanjot Singh'], ['4031/23', 'Rohit Kumar'],
+      ['4032/23', 'Aniket Bhardwaj'], ['4033/23', 'Akhil Semwal'], ['4034/23', 'Varun Kumar'],
+      ['4102/23', 'Vaibhav Rautela']
+    ];
+
+    function generateStudents() {
+      const tableBody = document.getElementById("tableBody");
+      students.forEach(([roll, name]) => {
+        let row = document.createElement("tr");
+        let rowData = `<td>${roll}</td><td>${name}</td>`;
+        let total = 0, count = 0;
+
+        for (let i = 0; i < 6; i++) {
+          const isAbsent = Math.random() < 0.1;
+          const marks = isAbsent ? "A" : Math.floor(Math.random() * 51);
+          if (marks !== "A") {
+            total += marks;
+            count++;
+          }
+          rowData += `<td><div class="mark-cell"><input type="text" value="${marks}" onchange="updateMarks(this)" /><span>/50</span></div></td>`;
+        }
+
+        const avg = count > 0 ? (total / count).toFixed(2) + "/50" : "A/50";
+        rowData += `<td class="avg">${avg}</td><td class="position"></td>`;
+        row.innerHTML = rowData;
+        tableBody.appendChild(row);
+      });
+    }
+
+    function updateMarks(input) {
+      let val = input.value.trim().toUpperCase();
+      if (val === "A") {
+        input.value = "A";
+      } else {
+        const mark = parseInt(val);
+        if (isNaN(mark) || mark < 0 || mark > 50) {
+          alert("Enter a number between 0 and 50 or 'A'");
+          input.value = "";
+          return;
+        } else {
+          input.value = mark;
+        }
+      }
+
+      const row = input.closest("tr");
+      const inputs = row.querySelectorAll("td input");
+      let total = 0, count = 0;
+
+      inputs.forEach(inp => {
+        const val = inp.value.trim().toUpperCase();
+        if (val === "A") return;
+        const mark = parseInt(val);
+        if (!isNaN(mark)) {
+          total += mark;
+          count++;
+        }
+      });
+
+      const avgCell = row.querySelector(".avg");
+      avgCell.innerText = count > 0 ? (total / count).toFixed(2) + "/50" : "A/50";
+
+      row.querySelector(".position").innerText = "";
+      row.classList.remove("first", "second", "third");
+    }
+
+    function highlightTop3() {
+      const rows = Array.from(document.querySelectorAll("#tableBody tr"));
+      const eligible = [];
+
+      rows.forEach(row => {
+        const avgText = row.querySelector(".avg").innerText;
+        const avg = avgText.includes("A") ? 0 : parseFloat(avgText);
+        const inputs = row.querySelectorAll("td input");
+        let allValid = true, hasZero = false;
+
+        inputs.forEach(inp => {
+          const val = inp.value.trim().toUpperCase();
+          if (val === "A") allValid = false;
+          if (val === "0") hasZero = true;
+        });
+
+        if (allValid && avg > 30 && !hasZero) {
+          eligible.push({ row, avg });
+        }
+      });
+
+      eligible.sort((a, b) => b.avg - a.avg);
+      const classes = ["first", "second", "third"];
+      const labels = ["1st", "2nd", "3rd"];
+
+      rows.forEach(r => {
+        r.classList.remove("first", "second", "third");
+        r.querySelector(".position").innerText = "";
+      });
+
+      eligible.slice(0, 3).forEach((entry, i) => {
+        entry.row.classList.add(classes[i]);
+        entry.row.querySelector(".position").innerText = labels[i];
+      });
+    }
+
+    function highlightSubjectToppers() {
+      document.querySelectorAll("td input").forEach(inp => inp.classList.remove("topper"));
+
+      for (let col = 2; col <= 7; col++) {
+        let max = -1;
+        let topInputs = [];
+
+        document.querySelectorAll("#tableBody tr").forEach(row => {
+          const input = row.cells[col].querySelector("input");
+          const val = input.value.trim().toUpperCase();
+          if (val === "A" || isNaN(val)) return;
+          const num = parseInt(val);
+          if (num > max) {
+            max = num;
+            topInputs = [input];
+          } else if (num === max) {
+            topInputs.push(input);
+          }
+        });
+
+        topInputs.forEach(inp => inp.classList.add("topper"));
+      }
+    }
+
+    function goHome() {
+      window.location.href = "../index.html"; // Update path as needed
+    }
+
+    window.onload = generateStudents;
+  </script>
+</body>
+</html>

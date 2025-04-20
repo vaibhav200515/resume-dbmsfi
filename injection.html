@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL Injection</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0e0e0e;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #fff4e6;
+      border-left: 6px solid #e67e22;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #e67e22;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #e67e22;
+      color: white;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+
+    tbody tr:hover {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SQL Injection</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p><strong>SQL Injection</strong> is a type of attack where an attacker can execute malicious SQL statements through input fields in a web application.</p>
+    <p>It occurs when input values are directly included in SQL queries without proper validation or escaping.</p>
+    <p>This vulnerability can lead to unauthorized access, data leakage, data manipulation, or even complete control over the database.</p>
+  </section>
+
+  <section>
+    <h2>📘 Example: Vulnerable Login Query</h2>
+    <pre><code>SELECT * FROM users WHERE username = 'admin' AND password = '123';</code></pre>
+    
+    <p>If the attacker enters the following in the password field:</p>
+    <pre><code>' OR '1'='1</code></pre>
+
+    <p>The resulting SQL query becomes:</p>
+    <pre><code>SELECT * FROM users WHERE username = 'admin' AND password = '' OR '1'='1';</code></pre>
+  </section>
+
+  <section>
+    <h2>❌ Consequences</h2>
+    <ul>
+      <li>Bypasses authentication</li>
+      <li>Accesses unauthorized data</li>
+      <li>Deletes or updates data maliciously</li>
+      <li>Gains full control over the database</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>✅ Prevention Techniques</h2>
+    <ul>
+      <li>Use Prepared Statements (Parameterized Queries)</li>
+      <li>Sanitize and validate all user inputs</li>
+      <li>Limit database privileges for application users</li>
+      <li>Use ORM frameworks that handle query escaping</li>
+    </ul>
+
+    <h3>✔ Example using Prepared Statement (PHP):</h3>
+    <pre><code>$stmt = $pdo->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
+$stmt->execute([$username, $password]);</code></pre>
+  </section>
+
+  <section>
+    <h2>🛡️ Output</h2>
+    <p>Without injection protection, malicious users can log in without valid credentials.</p>
+    <p>With prepared statements, the input is treated as data, not code — making injection impossible.</p>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Input</th>
+          <th>Unsafe Result</th>
+          <th>Safe Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Password: <code>' OR '1'='1</code></td>
+          <td>Login success (unauthorized)</td>
+          <td>Login failed (as expected)</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</body>
+</html>

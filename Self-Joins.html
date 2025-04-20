@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL Self Join</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #111111;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #eafaf1;
+      border-left: 6px solid #0898f8;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #0699fb;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0798f9;
+      color: white;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+
+    tbody tr:hover {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SQL SELF JOIN</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p>The <strong>SELF JOIN</strong> in SQL is a join where a table is joined with itself. It is used to compare rows within the same table based on a related column.</p>
+    <p>This is useful for hierarchical data or to find relationships among rows in the same table. You must use aliases to distinguish between the two instances of the table.</p>
+  </section>
+
+  <section>
+    <h2>📘 Syntax</h2>
+    <pre><code>SELECT a.column_name, b.column_name
+FROM table_name a
+JOIN table_name b
+ON a.common_column = b.common_column;</code></pre>
+  </section>
+
+  <section>
+    <h2>🧾 Example: Employees and Their Managers</h2>
+    <pre><code>SELECT e1.name AS Employee, e2.name AS Manager
+FROM employees e1
+JOIN employees e2
+ON e1.manager_id = e2.id;</code></pre>
+
+    <h3>✅ Explanation</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Clause</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>employees e1</td><td>First instance of the employees table (represents employee)</td></tr>
+        <tr><td>employees e2</td><td>Second instance of the same table (represents manager)</td></tr>
+        <tr><td>e1.manager_id = e2.id</td><td>Links each employee to their manager</td></tr>
+        <tr><td>e1.name AS Employee</td><td>Returns the name of the employee</td></tr>
+        <tr><td>e2.name AS Manager</td><td>Returns the name of the manager</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <p>Consider the following <strong>employees</strong> table:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>name</th>
+          <th>manager_id</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Alice</td><td>3</td></tr>
+        <tr><td>2</td><td>Bob</td><td>3</td></tr>
+        <tr><td>3</td><td>Carol</td><td>NULL</td></tr>
+      </tbody>
+    </table>
+
+    <p>Output after executing the SELF JOIN query:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Employee</th>
+          <th>Manager</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Alice</td><td>Carol</td></tr>
+        <tr><td>Bob</td><td>Carol</td></tr>
+      </tbody>
+    </table>
+
+    <p>Both Alice and Bob report to Carol, so the join links those rows together.</p>
+  </section>
+
+</body>
+</html>

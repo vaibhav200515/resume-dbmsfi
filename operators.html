@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL Operators</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #020202;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 950px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #fef9e7;
+      border-left: 6px solid #f1c40f;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #f1c40f;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f1c40f;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SQL Operators</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p>SQL <strong>operators</strong> are symbols or keywords used to perform operations on data, such as comparisons, logical decisions, or calculations. They are often used in <code>WHERE</code> clauses or in expressions with <code>SELECT</code>, <code>UPDATE</code>, and <code>DELETE</code> statements.</p>
+  </section>
+
+  <section>
+    <h2>🔢 Arithmetic Operators</h2>
+    <p>Used to perform mathematical calculations on numeric data.</p>
+    <table>
+      <thead>
+        <tr><th>Operator</th><th>Description</th><th>Example</th><th>Result</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>+</td><td>Addition</td><td>SELECT 10 + 5 AS Result;</td><td>15</td></tr>
+        <tr><td>-</td><td>Subtraction</td><td>SELECT 20 - 8 AS Result;</td><td>12</td></tr>
+        <tr><td>*</td><td>Multiplication</td><td>SELECT 6 * 7 AS Result;</td><td>42</td></tr>
+        <tr><td>/</td><td>Division</td><td>SELECT 25 / 5 AS Result;</td><td>5</td></tr>
+        <tr><td>%</td><td>Modulus</td><td>SELECT 10 % 3 AS Result;</td><td>1</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>🔍 Comparison Operators</h2>
+    <p>Used to compare two values in conditions like <code>WHERE</code> clauses.</p>
+    <table>
+      <thead>
+        <tr><th>Operator</th><th>Description</th><th>Example</th><th>Use Case</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>=</td><td>Equal</td><td>WHERE age = 20</td><td>Find students aged 20</td></tr>
+        <tr><td>!= or &lt;&gt;</td><td>Not Equal</td><td>WHERE course != 'BCA'</td><td>Find students not in BCA</td></tr>
+        <tr><td>&gt;</td><td>Greater Than</td><td>WHERE marks > 70</td><td>Find marks above 70</td></tr>
+        <tr><td>&lt;</td><td>Less Than</td><td>WHERE age &lt; 18</td><td>Find minors</td></tr>
+        <tr><td>&gt;=</td><td>Greater Than or Equal</td><td>WHERE salary >= 50000</td><td>Find high salary employees</td></tr>
+        <tr><td>&lt;=</td><td>Less Than or Equal</td><td>WHERE age <= 25</td><td>Find youth</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>🔗 Logical Operators</h2>
+    <p>Used to combine multiple conditions in SQL statements.</p>
+    <table>
+      <thead>
+        <tr><th>Operator</th><th>Description</th><th>Example</th><th>Use Case</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>AND</td><td>All conditions must be true</td><td>WHERE age > 18 AND course = 'BCA'</td><td>BCA students above 18</td></tr>
+        <tr><td>OR</td><td>At least one condition is true</td><td>WHERE city = 'Delhi' OR city = 'Mumbai'</td><td>Students from Delhi or Mumbai</td></tr>
+        <tr><td>NOT</td><td>Negates a condition</td><td>WHERE NOT (course = 'B.Tech')</td><td>Students not in B.Tech</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>📘 Real Example</h2>
+    <pre><code>SELECT * FROM students
+WHERE course = 'BCA' AND age &gt;= 20;</code></pre>
+    <p>🔎 This will return all students enrolled in BCA and are at least 20 years old.</p>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <p>The query will return filtered records based on applied operators.</p>
+    <pre>
++-------------+----------------+-----+--------+
+| student_id  | name           | age | course |
++-------------+----------------+-----+--------+
+| 102         | Sneha Gupta    | 21  | BCA    |
+| 105         | Rahul Mehta    | 22  | BCA    |
++-------------+----------------+-----+--------+
+    </pre>
+  </section>
+
+</body>
+</html>

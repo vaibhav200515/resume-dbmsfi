@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Introduction to PL/SQL</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #090909;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #eafaf1;
+      border-left: 6px solid #0497fa;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #0493f2;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0596f6;
+      color: white;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+
+    tbody tr:hover {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Introduction to PL/SQL</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p><strong>PL/SQL</strong> (Procedural Language/Structured Query Language) is Oracle Corporation's procedural extension for SQL and the Oracle relational database. It allows the combination of SQL with procedural features such as loops, conditions, and exception handling, which enables developers to write full programs to manage data logic efficiently.</p>
+    <p>PL/SQL is tightly integrated with the Oracle Database, providing a powerful and flexible programming environment that supports both SQL and procedural constructs. It’s ideal for writing complex business logic, data validation, and batch processing scripts.</p>
+  </section>
+
+  <section>
+    <h2>📘 Syntax</h2>
+    <pre><code>DECLARE
+  -- Variable declarations
+BEGIN
+  -- Executable statements
+EXCEPTION
+  -- Exception handling statements
+END;
+/</code></pre>
+  </section>
+
+  <section>
+    <h2>🧾 Example: Basic PL/SQL Block</h2>
+    <pre><code>BEGIN
+  DBMS_OUTPUT.PUT_LINE('Hello, PL/SQL!');
+END;
+/</code></pre>
+
+    <h3>✅ Explanation</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Component</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>BEGIN</td><td>Marks the start of the executable section</td></tr>
+        <tr><td>DBMS_OUTPUT.PUT_LINE</td><td>Procedure used to display output</td></tr>
+        <tr><td>END;</td><td>Marks the end of the PL/SQL block</td></tr>
+        <tr><td>/</td><td>Executes the block in SQL*Plus or similar tools</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <p>When executed, the above PL/SQL block will produce the following output (if server output is enabled):</p>
+    <pre><code>Hello, PL/SQL!</code></pre>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL SUM Function</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0c0c0c;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #f9ebea;
+      border-left: 6px solid #e74c3c;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #e74c3c;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #e74c3c;
+      color: white;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SQL SUM Function</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p>The <strong>SUM()</strong> function in SQL is used to calculate the total sum of a numeric column.</p>
+    <p>It helps to quickly determine the total of values like salaries, prices, marks, or any other numeric field in a table.</p>
+  </section>
+
+  <section>
+    <h2>📘 Syntax</h2>
+    <pre><code>-- Total of a column
+SELECT SUM(column_name) FROM table_name;
+
+-- With condition
+SELECT SUM(column_name) FROM table_name WHERE condition;</code></pre>
+  </section>
+
+  <section>
+    <h2>🧾 Example: Total Marks of BCA Students</h2>
+    <pre><code>SELECT SUM(marks) AS total_bca_marks 
+FROM students 
+WHERE course = 'BCA';</code></pre>
+
+    <h3>✅ Explanation</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Clause</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>SUM(marks)</td><td>Adds up marks of selected students</td></tr>
+        <tr><td>WHERE course = 'BCA'</td><td>Only considers students from BCA course</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <p>Sample result:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>total_bca_marks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>256</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</body>
+</html>

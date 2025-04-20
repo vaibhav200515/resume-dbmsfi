@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL DEFAULT Constraint</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0c0c0c;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #eafaf1;
+      border-left: 6px solid #0b9cfd;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #0596f7;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0597f8;
+      color: white;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+
+    tbody tr:hover {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SQL DEFAULT Constraint</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p>The <strong>DEFAULT</strong> constraint in SQL is used to assign a default value to a column when no value is specified during an insert.</p>
+    <p>This helps in ensuring that all rows have valid data, even when the user omits a value for that column.</p>
+    <p>It can be applied to any data type and makes data entry easier and more consistent.</p>
+  </section>
+
+  <section>
+    <h2>📘 Syntax</h2>
+    <pre><code>CREATE TABLE table_name (
+  column1 datatype DEFAULT default_value,
+  column2 datatype,
+  ...
+);</code></pre>
+
+    <p>To add a DEFAULT constraint to an existing table:</p>
+    <pre><code>ALTER TABLE table_name
+ALTER COLUMN column_name SET DEFAULT default_value;</code></pre>
+  </section>
+
+  <section>
+    <h2>🧾 Example: Set default admission date</h2>
+    <pre><code>CREATE TABLE students (
+  student_id INT PRIMARY KEY,
+  name VARCHAR(100),
+  admission_date DATE DEFAULT CURRENT_DATE
+);</code></pre>
+
+    <h3>✅ Explanation</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Column</th>
+          <th>Constraint</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>student_id</td><td>PRIMARY KEY</td><td>Unique ID for each student</td></tr>
+        <tr><td>name</td><td>None</td><td>Name of the student</td></tr>
+        <tr><td>admission_date</td><td>DEFAULT CURRENT_DATE</td><td>Uses current date if no date is provided</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <p>Inserting a record without specifying admission_date:</p>
+    <pre><code>INSERT INTO students (student_id, name)
+VALUES (101, 'Rohit Sharma');</code></pre>
+
+    <p>The database automatically fills in today's date:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>student_id</th>
+          <th>name</th>
+          <th>admission_date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>101</td>
+          <td>Rohit Sharma</td>
+          <td>2025-04-09</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>The <strong>DEFAULT</strong> constraint ensures that no column is left empty unless explicitly allowed.</p>
+  </section>
+
+</body>
+</html>

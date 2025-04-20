@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL Equi-Join (Querying Multiple Tables)</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0c0c0c;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #eafaf1;
+      border-left: 6px solid #0899fa;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #0997f6;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0798f8;
+      color: white;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+
+    tbody tr:hover {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Querying Multiple Tables using Equi-Joins</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p>An <strong>Equi-Join</strong> is a type of join that combines rows from two or more tables based on a related column between them using the equality operator (=).</p>
+    <p>It is one of the most commonly used joins when querying multiple tables, and it helps retrieve related data that is stored across different tables.</p>
+    <p>Equi-Joins are typically used with primary and foreign key relationships.</p>
+  </section>
+
+  <section>
+    <h2>📘 Syntax</h2>
+    <pre><code>SELECT table1.column1, table2.column2, ...
+FROM table1, table2
+WHERE table1.common_column = table2.common_column;</code></pre>
+  </section>
+
+  <section>
+    <h2>🧾 Example: Join "students" and "departments" tables</h2>
+    <pre><code>SELECT students.name, departments.dept_name
+FROM students, departments
+WHERE students.dept_id = departments.dept_id;</code></pre>
+
+    <h3>✅ Explanation</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Clause</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>students.name</td><td>Selects the name of the student</td></tr>
+        <tr><td>departments.dept_name</td><td>Selects the department name from the departments table</td></tr>
+        <tr><td>students, departments</td><td>Specifies the two tables involved in the join</td></tr>
+        <tr><td>students.dept_id = departments.dept_id</td><td>Join condition based on matching department IDs</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <p>Assume we have the following data:</p>
+
+    <h3>students table</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>name</th>
+          <th>dept_id</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>John</td><td>101</td></tr>
+        <tr><td>2</td><td>Jane</td><td>102</td></tr>
+        <tr><td>3</td><td>Mike</td><td>101</td></tr>
+      </tbody>
+    </table>
+
+    <h3>departments table</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>dept_id</th>
+          <th>dept_name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>101</td><td>Computer Science</td></tr>
+        <tr><td>102</td><td>Mathematics</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Result</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>name</th>
+          <th>dept_name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>John</td><td>Computer Science</td></tr>
+        <tr><td>Jane</td><td>Mathematics</td></tr>
+        <tr><td>Mike</td><td>Computer Science</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL INSERT INTO</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #080808;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #eafaf1;
+      border-left: 6px solid #27ae60;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #27ae60;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #27ae60;
+      color: white;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SQL INSERT INTO</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p>The <strong>INSERT INTO</strong> command in SQL is used to add new records (rows) to a table.</p>
+    <p>It allows inserting values into all columns or just selected ones. This is a key part of the Data Manipulation Language (DML) in SQL, used for populating tables with data such as users, products, or student details.</p>
+    <p>The command is typically used after creating a table, or when adding new data during the application workflow.</p>
+  </section>
+
+  <section>
+    <h2>📘 Syntax</h2>
+    <pre><code>-- Insert into all columns (order must match table structure)
+INSERT INTO table_name 
+VALUES (value1, value2, ...);
+
+-- Insert into selected columns
+INSERT INTO table_name (column1, column2, ...)
+VALUES (value1, value2, ...);</code></pre>
+  </section>
+
+  <section>
+    <h2>🧾 Example: Insert a new student record</h2>
+    <pre><code>INSERT INTO students (student_id, name, age, course, admission_date)
+VALUES (104, 'Neha Singh', 22, 'BBA', '2024-08-01');</code></pre>
+
+    <h3>✅ Explanation</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Column</th>
+          <th>Inserted Value</th>
+          <th>Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>student_id</td><td>104</td><td>Unique identifier for the student</td></tr>
+        <tr><td>name</td><td>'Neha Singh'</td><td>Student’s full name</td></tr>
+        <tr><td>age</td><td>22</td><td>Student’s age</td></tr>
+        <tr><td>course</td><td>'BBA'</td><td>Enrolled course</td></tr>
+        <tr><td>admission_date</td><td>'2024-08-01'</td><td>Date of admission</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <p>When the command is executed successfully, SQL returns:</p>
+    <pre>1 row(s) inserted.</pre>
+
+    <h3>📋 Check the inserted data</h3>
+    <pre><code>SELECT * FROM students;</code></pre>
+
+    <table>
+      <thead>
+        <tr>
+          <th>student_id</th>
+          <th>name</th>
+          <th>age</th>
+          <th>course</th>
+          <th>admission_date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>104</td><td>Neha Singh</td><td>22</td><td>BBA</td><td>2024-08-01</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL Aggregate Functions</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color:black;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #057ff8;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #fdf6ec;
+      color: #057ff8;
+      border-left: 6px solid ;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid ;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #057ff8;
+      color: white;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SQL Aggregate Functions</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p>Aggregate functions in SQL perform calculations on a set of values and return a single value.</p>
+    <p>These are commonly used with the <code>GROUP BY</code> clause to summarize or analyze data grouped by one or more columns.</p>
+    <p>Some typical use cases include calculating total sales, average marks, counting records, etc.</p>
+  </section>
+
+  <section>
+    <h2>📘 Common Aggregate Functions</h2>
+    <ul>
+      <li><strong>COUNT()</strong> – Returns the number of rows</li>
+      <li><strong>SUM()</strong> – Returns the total sum of a numeric column</li>
+      <li><strong>AVG()</strong> – Returns the average value</li>
+      <li><strong>MIN()</strong> – Returns the smallest value</li>
+      <li><strong>MAX()</strong> – Returns the largest value</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🧾 Example: Using Aggregate Functions on a Students Table</h2>
+    <pre><code>SELECT 
+  COUNT(*) AS total_students,
+  AVG(age) AS average_age,
+  MIN(age) AS youngest,
+  MAX(age) AS oldest
+FROM students;</code></pre>
+
+    <h3>✅ Explanation</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Function</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>COUNT(*)</td><td>Counts all students</td></tr>
+        <tr><td>AVG(age)</td><td>Calculates the average age</td></tr>
+        <tr><td>MIN(age)</td><td>Finds the youngest student</td></tr>
+        <tr><td>MAX(age)</td><td>Finds the oldest student</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <p>Example result:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>total_students</th>
+          <th>average_age</th>
+          <th>youngest</th>
+          <th>oldest</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>5</td>
+          <td>20.6</td>
+          <td>18</td>
+          <td>23</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PL/SQL Assignments and Expressions</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0c0c0c;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #eafaf1;
+      border-left: 6px solid #0599fc;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #0598fa;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0493f3;
+      color: white;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+
+    tbody tr:hover {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>PL/SQL Assignments and Expressions</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p>In PL/SQL, <strong>assignments</strong> and <strong>expressions</strong> are fundamental elements used to perform calculations and store results into variables. The assignment statement stores the result of an expression into a variable using the assignment operator <code>:=</code>.</p>
+    <p>An <strong>expression</strong> can be a combination of variables, constants, literals, and operators that return a value. These expressions can be arithmetic (e.g., <code>a + b</code>), logical (e.g., <code>a > b</code>), or even function-based (e.g., <code>ROUND(salary)</code>).</p>
+  </section>
+
+  <section>
+    <h2>📘 Syntax</h2>
+    <pre><code>variable_name := expression;</code></pre>
+    <p>This statement evaluates the expression on the right-hand side and stores the result into the variable on the left-hand side.</p>
+  </section>
+
+  <section>
+    <h2>🧾 Example</h2>
+    <pre><code>DECLARE
+  a NUMBER := 10;
+  b NUMBER := 5;
+  sum_result NUMBER;
+  diff_result NUMBER;
+  mult_result NUMBER;
+  div_result NUMBER;
+BEGIN
+  sum_result := a + b;
+  diff_result := a - b;
+  mult_result := a * b;
+  div_result := a / b;
+
+  DBMS_OUTPUT.PUT_LINE('Sum: ' || sum_result);
+  DBMS_OUTPUT.PUT_LINE('Difference: ' || diff_result);
+  DBMS_OUTPUT.PUT_LINE('Product: ' || mult_result);
+  DBMS_OUTPUT.PUT_LINE('Quotient: ' || div_result);
+END;
+/</code></pre>
+
+    <h3>✅ Explanation</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Assignment</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>sum_result := a + b</td><td>Adds a and b, stores result in sum_result</td></tr>
+        <tr><td>diff_result := a - b</td><td>Subtracts b from a</td></tr>
+        <tr><td>mult_result := a * b</td><td>Multiplies a and b</td></tr>
+        <tr><td>div_result := a / b</td><td>Divides a by b</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <pre><code>
+Sum: 15
+Difference: 5
+Product: 50
+Quotient: 2
+    </code></pre>
+    <p>Each assignment successfully stores the result of an arithmetic expression and displays it using <code>DBMS_OUTPUT.PUT_LINE</code>.</p>
+  </section>
+
+</body>
+</html>

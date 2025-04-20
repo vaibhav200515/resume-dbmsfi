@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL LEFT JOIN</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0c0c0c;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 950px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #fef9e7;
+      border-left: 6px solid #f1c40f;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #f1c40f;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f1c40f;
+      color: white;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SQL LEFT JOIN</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p><strong>LEFT JOIN</strong> returns all records from the left table, and the matched records from the right table.</p>
+    <p>If there is no match, the result is NULL on the side of the right table.</p>
+    <p>This is useful for retrieving all data from one table along with related data if available.</p>
+  </section>
+
+  <section>
+    <h2>📘 Syntax</h2>
+    <pre><code>SELECT columns
+FROM table1
+LEFT JOIN table2
+ON table1.column_name = table2.column_name;</code></pre>
+  </section>
+
+  <section>
+    <h2>🧾 Example: LEFT JOIN students and courses</h2>
+    <pre><code>SELECT students.name, courses.course_name
+FROM students
+LEFT JOIN courses
+ON students.course_id = courses.course_id;</code></pre>
+
+    <h3>✅ Explanation</h3>
+    <p>This query fetches all students and their course names. If a student is not enrolled in any course, the course name will appear as NULL.</p>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>name</th>
+          <th>course_name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Rohit Sharma</td>
+          <td>BCA</td>
+        </tr>
+        <tr>
+          <td>Riya Mehta</td>
+          <td>BBA</td>
+        </tr>
+        <tr>
+          <td>Akash Verma</td>
+          <td>NULL</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</body>
+</html>

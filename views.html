@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL Views</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #060606;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #eafaf1;
+      border-left: 6px solid #079afc;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #0796f6;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0797f8;
+      color: white;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+
+    tbody tr:hover {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SQL Views</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p>A <strong>VIEW</strong> in SQL is a virtual table based on the result of a SELECT query.</p>
+    <p>It does not store data physically but acts as a stored query that simplifies complex operations.</p>
+    <p>Views help in enhancing security by restricting access to specific columns or rows of a table.</p>
+  </section>
+
+  <section>
+    <h2>📘 Syntax</h2>
+    <ul>
+      <li><strong>Create View:</strong></li>
+      <pre><code>CREATE VIEW view_name AS
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;</code></pre>
+
+      <li><strong>Select from View:</strong></li>
+      <pre><code>SELECT * FROM view_name;</code></pre>
+
+      <li><strong>Update View:</strong> (if the view is updatable)</li>
+      <pre><code>UPDATE view_name
+SET column = value
+WHERE condition;</code></pre>
+
+      <li><strong>Drop View:</strong></li>
+      <pre><code>DROP VIEW view_name;</code></pre>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🧾 Example: Create a View for Students in BCA Course</h2>
+    <pre><code>CREATE VIEW bca_students AS
+SELECT student_id, name, age
+FROM students
+WHERE course = 'BCA';</code></pre>
+
+    <h3>✅ Explanation</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Clause</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>CREATE VIEW bca_students AS</td><td>Creates a view named bca_students</td></tr>
+        <tr><td>SELECT student_id, name, age</td><td>Selects specific columns from the table</td></tr>
+        <tr><td>FROM students</td><td>Uses the students table</td></tr>
+        <tr><td>WHERE course = 'BCA'</td><td>Filters students enrolled in BCA</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <p>Original <code>students</code> table:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>student_id</th>
+          <th>name</th>
+          <th>age</th>
+          <th>course</th>
+          <th>admission_date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>101</td><td>Rohit Sharma</td><td>20</td><td>BCA</td><td>2024-07-15</td></tr>
+        <tr><td>102</td><td>Ananya Verma</td><td>17</td><td>BBA</td><td>2024-06-10</td></tr>
+        <tr><td>103</td><td>Vikram Patel</td><td>18</td><td>BCA</td><td>2024-05-22</td></tr>
+      </tbody>
+    </table>
+
+    <p>Querying the view <code>bca_students</code>:</p>
+    <pre><code>SELECT * FROM bca_students;</code></pre>
+
+    <p>Result:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>student_id</th>
+          <th>name</th>
+          <th>age</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>101</td><td>Rohit Sharma</td><td>20</td></tr>
+        <tr><td>103</td><td>Vikram Patel</td><td>18</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</body>
+</html>

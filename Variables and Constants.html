@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PL/SQL Variables and Constants</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #101010;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #eafaf1;
+      border-left: 6px solid #069bfe;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #0696f7;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0798f8;
+      color: white;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+
+    tbody tr:hover {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>PL/SQL Variables and Constants</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p>In PL/SQL, <strong>variables</strong> and <strong>constants</strong> are used to store data temporarily during the execution of a program. Variables can change their values during execution, whereas constants hold fixed values that cannot be altered once defined.</p>
+    <p>These elements are essential in PL/SQL programming for data manipulation, control flow, and passing information between different blocks and procedures.</p>
+  </section>
+
+  <section>
+    <h2>📘 Declaring Variables</h2>
+    <p>Variables must be declared in the <code>DECLARE</code> section before they can be used in the <code>BEGIN</code> block. The syntax is:</p>
+    <pre><code>variable_name datatype [:= initial_value];</code></pre>
+
+    <h2>📘 Declaring Constants</h2>
+    <p>Constants are declared using the <code>CONSTANT</code> keyword:</p>
+    <pre><code>constant_name CONSTANT datatype := value;</code></pre>
+  </section>
+
+  <section>
+    <h2>🧾 Example</h2>
+    <pre><code>DECLARE
+  v_name      VARCHAR2(30);
+  v_age       NUMBER(3) := 25;
+  c_pi        CONSTANT NUMBER := 3.14159;
+BEGIN
+  v_name := 'John Doe';
+  DBMS_OUTPUT.PUT_LINE('Name: ' || v_name);
+  DBMS_OUTPUT.PUT_LINE('Age: ' || v_age);
+  DBMS_OUTPUT.PUT_LINE('PI: ' || c_pi);
+END;
+/</code></pre>
+
+    <h3>✅ Explanation</h3>
+    <ul>
+      <li><code>v_name</code> is a variable of type <code>VARCHAR2</code>.</li>
+      <li><code>v_age</code> is a <code>NUMBER</code> variable with an initial value.</li>
+      <li><code>c_pi</code> is a constant holding the value of π.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <p>When the block is executed, it will output:</p>
+    <pre><code>
+Name: John Doe
+Age: 25
+PI: 3.14159
+    </code></pre>
+  </section>
+
+</body>
+</html>

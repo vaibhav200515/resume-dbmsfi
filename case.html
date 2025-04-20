@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL CASE Statement</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #121213;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 950px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #fcf3cf;
+      border-left: 6px solid #f1c40f;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #f1c40f;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f1c40f;
+      color: white;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SQL CASE Statement</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p>The <strong>CASE</strong> statement in SQL is used to implement conditional logic within queries, similar to an <strong>IF-ELSE</strong> structure in programming languages.</p>
+    <p>It allows you to return specific values based on conditions, making query results more readable and meaningful. You can use it inside <code>SELECT</code>, <code>UPDATE</code>, <code>ORDER BY</code>, and other SQL clauses.</p>
+    <p>It's commonly used for creating labels, applying logic to calculations, and performing dynamic grouping or categorization in reports.</p>
+  </section>
+
+  <section>
+    <h2>📘 Syntax</h2>
+    <pre><code>CASE
+  WHEN condition1 THEN result1
+  WHEN condition2 THEN result2
+  ...
+  ELSE default_result
+END</code></pre>
+    <p>🔸 You can use the <code>CASE</code> expression inside a <code>SELECT</code> statement to create conditional outputs for a column.</p>
+  </section>
+
+  <section>
+    <h2>🧾 Example 1: Grade Evaluation</h2>
+    <pre><code>SELECT name, marks,
+  CASE 
+    WHEN marks >= 90 THEN 'A'
+    WHEN marks >= 75 THEN 'B'
+    WHEN marks >= 60 THEN 'C'
+    ELSE 'F'
+  END AS grade
+FROM students;</code></pre>
+
+    <h3>✅ Explanation</h3>
+    <p>This query assigns a grade (A, B, C, F) based on student marks using the <code>CASE</code> statement.</p>
+  </section>
+
+  <section>
+    <h2>🧾 Example 2: Salary Level</h2>
+    <pre><code>SELECT emp_id, name, salary,
+  CASE 
+    WHEN salary > 100000 THEN 'High'
+    WHEN salary BETWEEN 50000 AND 100000 THEN 'Medium'
+    ELSE 'Low'
+  END AS salary_level
+FROM employees;</code></pre>
+
+    <h3>✅ Explanation</h3>
+    <p>The CASE statement categorizes each employee's salary into 'High', 'Medium', or 'Low' levels.</p>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <h3>📋 Example Result for Students</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>name</th>
+          <th>marks</th>
+          <th>grade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Rohit</td><td>92</td><td>A</td></tr>
+        <tr><td>Anita</td><td>78</td><td>B</td></tr>
+        <tr><td>Sachin</td><td>55</td><td>F</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</body>
+</html>

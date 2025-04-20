@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PL/SQL Data Types</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #090909;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #eafaf1;
+      border-left: 6px solid #0398fb;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #0498fc;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0697f8;
+      color: white;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+
+    tbody tr:hover {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>PL/SQL Data Types</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p>PL/SQL supports a wide range of data types that are used to define variables, constants, and parameters in a program. These data types help in storing and manipulating different kinds of data such as numbers, characters, dates, and Boolean values. PL/SQL also supports complex and user-defined types for advanced programming needs.</p>
+  </section>
+
+  <section>
+    <h2>📘 Common Data Types in PL/SQL</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Data Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>NUMBER(p, s)</td>
+          <td>Stores numeric values with precision (p) and scale (s)</td>
+        </tr>
+        <tr>
+          <td>VARCHAR2(size)</td>
+          <td>Stores variable-length character strings</td>
+        </tr>
+        <tr>
+          <td>CHAR(size)</td>
+          <td>Stores fixed-length character strings</td>
+        </tr>
+        <tr>
+          <td>DATE</td>
+          <td>Stores date and time values</td>
+        </tr>
+        <tr>
+          <td>BOOLEAN</td>
+          <td>Stores TRUE, FALSE, or NULL (only in PL/SQL, not in SQL)</td>
+        </tr>
+        <tr>
+          <td>PLS_INTEGER</td>
+          <td>Efficient integer type for calculations in PL/SQL</td>
+        </tr>
+        <tr>
+          <td>BINARY_INTEGER</td>
+          <td>Similar to PLS_INTEGER, used for integer arithmetic</td>
+        </tr>
+        <tr>
+          <td>LOB (BLOB, CLOB, NCLOB)</td>
+          <td>Used for storing large binary or character data</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>🧾 Example</h2>
+    <pre><code>DECLARE
+  v_name     VARCHAR2(30);
+  v_salary   NUMBER(8,2);
+  v_joined   DATE;
+  v_status   BOOLEAN;
+BEGIN
+  v_name := 'Robert';
+  v_salary := 55000.75;
+  v_joined := SYSDATE;
+  v_status := TRUE;
+
+  DBMS_OUTPUT.PUT_LINE('Name: ' || v_name);
+  DBMS_OUTPUT.PUT_LINE('Salary: ' || v_salary);
+  DBMS_OUTPUT.PUT_LINE('Joined: ' || v_joined);
+  DBMS_OUTPUT.PUT_LINE('Active: ' || v_status);
+END;
+/</code></pre>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <p>The above code will output something like:</p>
+    <pre><code>
+Name: Robert
+Salary: 55000.75
+Joined: 10-APR-25
+Active: TRUE
+    </code></pre>
+    <p>This demonstrates how PL/SQL data types are declared and used in a program.</p>
+  </section>
+
+</body>
+</html>

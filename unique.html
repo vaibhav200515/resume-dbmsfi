@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL UNIQUE Constraint</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #090909;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #eafaf1;
+      border-left: 6px solid #089bfd;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #0797f7;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0595f6;
+      color: white;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+
+    tbody tr:hover {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SQL UNIQUE Constraint</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p>The <strong>UNIQUE</strong> constraint in SQL ensures that all values in a column or a combination of columns are different from each other.</p>
+    <p>It helps maintain data integrity by preventing duplicate entries in the specified column(s).</p>
+    <p>You can use UNIQUE on one or more columns. Multiple UNIQUE constraints are allowed in a table, but only one PRIMARY KEY.</p>
+  </section>
+
+  <section>
+    <h2>📘 Syntax</h2>
+    <pre><code>CREATE TABLE table_name (
+  column1 datatype UNIQUE,
+  column2 datatype,
+  ...
+);</code></pre>
+    <p>You can also add UNIQUE after table creation:</p>
+    <pre><code>ALTER TABLE table_name
+ADD CONSTRAINT constraint_name UNIQUE (column_name);</code></pre>
+  </section>
+
+  <section>
+    <h2>🧾 Example: Enforce UNIQUE constraint on email</h2>
+    <pre><code>CREATE TABLE students (
+  student_id INT,
+  name VARCHAR(100),
+  email VARCHAR(100) UNIQUE
+);</code></pre>
+
+    <h3>✅ Explanation</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Column</th>
+          <th>Constraint</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>student_id</td><td>None</td><td>Allows duplicates</td></tr>
+        <tr><td>name</td><td>None</td><td>Optional field</td></tr>
+        <tr><td>email</td><td>UNIQUE</td><td>No two students can have the same email</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <p>The table is created successfully. Now consider inserting data:</p>
+    <pre><code>INSERT INTO students (student_id, name, email)
+VALUES (1, 'Ravi Kumar', 'ravi@example.com');</code></pre>
+
+    <pre><code>INSERT INTO students (student_id, name, email)
+VALUES (2, 'Priya Singh', 'ravi@example.com');</code></pre>
+
+    <p>The second insert will fail with the following error:</p>
+    <pre><code>ERROR: Duplicate entry 'ravi@example.com' for key 'students.email'</code></pre>
+
+    <p>This ensures that no duplicate emails exist in the table.</p>
+  </section>
+
+</body>
+</html>

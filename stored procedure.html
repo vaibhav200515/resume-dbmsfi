@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL Stored Procedures</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0c0c0c;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 950px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #eaf2f8;
+      border-left: 6px solid #0497fa;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #0697f8;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0698fa;
+      color: white;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SQL Stored Procedures</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p>A <strong>stored procedure</strong> is a precompiled collection of one or more SQL statements stored in the database with an assigned name.</p>
+    <p>Stored procedures help you encapsulate logic like inserting data, validating inputs, updating records, or generating reports. They improve performance, reduce redundancy, and support reusability.</p>
+    <p>They can also accept input parameters and return results or output values.</p>
+  </section>
+
+  <section>
+    <h2>📘 Syntax (MySQL Style)</h2>
+    <pre><code>DELIMITER //
+
+CREATE PROCEDURE procedure_name (IN param1 datatype, IN param2 datatype)
+BEGIN
+   -- SQL statements
+END //
+
+DELIMITER ;</code></pre>
+    <p>🔸 Use <code>DELIMITER</code> to tell the SQL interpreter where the procedure ends (especially in MySQL).</p>
+  </section>
+
+  <section>
+    <h2>🧾 Example: Create a Procedure to Insert a Student</h2>
+    <pre><code>DELIMITER //
+
+CREATE PROCEDURE AddStudent (
+  IN sid INT,
+  IN sname VARCHAR(100),
+  IN sage INT,
+  IN scourse VARCHAR(50),
+  IN sdate DATE
+)
+BEGIN
+  INSERT INTO students (student_id, name, age, course, admission_date)
+  VALUES (sid, sname, sage, scourse, sdate);
+END //
+
+DELIMITER ;</code></pre>
+
+    <h3>▶️ Calling the Procedure</h3>
+    <pre><code>CALL AddStudent(104, 'Priya Sharma', 22, 'BBA', '2024-08-01');</code></pre>
+  </section>
+
+  <section>
+    <h2>✅ Explanation</h2>
+    <ul>
+      <li><code>CREATE PROCEDURE</code> defines a new procedure.</li>
+      <li><code>IN</code> parameters are used to pass data into the procedure.</li>
+      <li>The <code>INSERT</code> statement adds a new student using the passed values.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <p>If the procedure is called successfully, it will insert one row into the <code>students</code> table.</p>
+    <pre>Query OK, 1 row affected</pre>
+
+    <h3>📋 Verify the Data</h3>
+    <pre><code>SELECT * FROM students WHERE student_id = 104;</code></pre>
+    <table>
+      <thead>
+        <tr>
+          <th>student_id</th>
+          <th>name</th>
+          <th>age</th>
+          <th>course</th>
+          <th>admission_date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>104</td>
+          <td>Priya Sharma</td>
+          <td>22</td>
+          <td>BBA</td>
+          <td>2024-08-01</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</body>
+</html>

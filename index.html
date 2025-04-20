@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylish Big Buttons</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing:content-box;        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #9de40f;
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            background: url(image/bcakground.jpg) no-repeat;
+            background-size:cover;
+            background-position:center;
+        }
+
+        /* Navbar Styles */
+        nav {
+            width: 100%;
+            background-color: rgba(16, 203, 245, 0.792);
+            padding: 40px 0; /* Increased height */
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            text-align: center;
+        }
+
+        nav:hover {
+            background-color: rgb(11, 11, 245);
+            transition: all 0.4s ease-in-out;
+        }
+
+        nav h2 {
+            color: #2b2929;
+            font-size: 3.0rem; /* Increased size */
+            margin: 0;
+            margin-left: 150px;
+            display:inline-flex;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        nav h2:hover {
+            color: #1de2a0;
+            text-shadow: 2px 2px 5px rgba(209, 206, 206, 0.3);
+            transition: all 0.4s ease-in-out;
+            font-size: 2.6rem; /* Increased hover size */
+        }
+
+        nav .student-info-btn {
+            float: right;
+            color: #c52e2e;
+            font-size: 1.2rem;
+            background-color: #0f81ec;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav .student-info-btn:hover {
+            background-color: #f53f08;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    
+
+        /* Button styles */
+        .container {
+            text-align: center;
+            margin-top: 280px; /* Adjusted for increased navbar */
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 30px 80px;
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 12px;
+            color: white;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-blue { background-color: #3498db; }
+        .btn-red { background-color: #da4f40; }
+        .btn-green { background-color: #2ecc71; }
+        .btn-pink {background-color:rgb(245, 15, 53);}
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        @media screen and (min-width: 768px) {
+            .button-group {
+                flex-direction: row;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <h2>Database Management System</h2>
+    </nav>
+    <!-- Floating Student Info Panel -->
+    
+
+    <div class="container">
+        <h1>Select the icons</h1>
+
+        <div class="button-group">
+            <a href="sql.html" class="btn btn-blue">S Q L</a>
+            <a href="pl_sql.html" class="btn btn-green">PL S Q L</a>
+            <a href="crash-course.html" class="btn btn-red">Case Study</a>
+            <a href="student.html" class="btn btn-pink">student info</a>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL Joins</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0c0c0c;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 950px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #e8f8f5;
+      border-left: 6px solid #17a589;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #17a589;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #17a589;
+      color: white;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SQL Joins</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p><strong>SQL Joins</strong> are used to combine rows from two or more tables based on a related column between them.</p>
+    <p>Joins help retrieve data that is spread across multiple tables. It's a powerful feature of relational databases.</p>
+    <p>The most common types of joins are <strong>INNER JOIN</strong>, <strong>LEFT JOIN</strong>, <strong>RIGHT JOIN</strong>, and <strong>FULL JOIN</strong>.</p>
+  </section>
+
+  <section>
+    <h2>📘 Syntax (INNER JOIN)</h2>
+    <pre><code>SELECT table1.column1, table2.column2, ...
+FROM table1
+INNER JOIN table2
+ON table1.common_column = table2.common_column;</code></pre>
+  </section>
+
+  <section>
+    <h2>🧾 Example: Join students and courses table</h2>
+    <pre><code>SELECT students.name, courses.course_name
+FROM students
+INNER JOIN courses
+ON students.course_id = courses.course_id;</code></pre>
+
+    <h3>✅ Explanation</h3>
+    <p>This query fetches student names along with their corresponding course names by joining the <code>students</code> table with the <code>courses</code> table using the <code>course_id</code> field.</p>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>name</th>
+          <th>course_name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Rohit Sharma</td>
+          <td>BCA</td>
+        </tr>
+        <tr>
+          <td>Riya Mehta</td>
+          <td>BBA</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>📂 Types of Joins</h2>
+    <ul>
+      <li><strong>INNER JOIN</strong>: Returns only the matching rows between both tables.</li>
+      <li><strong>LEFT JOIN</strong>: Returns all rows from the left table, and matching rows from the right.</li>
+      <li><strong>RIGHT JOIN</strong>: Returns all rows from the right table, and matching rows from the left.</li>
+      <li><strong>FULL JOIN</strong>: Returns all rows when there is a match in either left or right table.</li>
+    </ul>
+  </section>
+
+</body>
+</html>

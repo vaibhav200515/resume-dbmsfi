@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Predefined Exceptions in PL/SQL</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #111111;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #eafaf1;
+      border-left: 6px solid #099afb;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #0698fa;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0997f5;
+      color: white;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+
+    tbody tr:hover {
+      background-color: #f9f9f9;
+    }
+
+    code {
+      background: #f4f4f4;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Predefined Exceptions in PL/SQL</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p>Predefined exceptions in PL/SQL are automatically raised by the Oracle database system whenever a specific standard error occurs during program execution. These exceptions are already declared in the standard package and do not require manual declaration by the programmer.</p>
+    <p>They help make error handling simple and readable for frequently occurring problems such as selecting no data, dividing by zero, or trying to assign a value to an incompatible variable type.</p>
+  </section>
+
+  <section>
+    <h2>📘 Common Predefined Exceptions</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Exception</th>
+          <th>Error Code</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>NO_DATA_FOUND</td>
+          <td>ORA-01403</td>
+          <td>Raised when a SELECT INTO statement returns no rows.</td>
+        </tr>
+        <tr>
+          <td>TOO_MANY_ROWS</td>
+          <td>ORA-01422</td>
+          <td>Occurs when SELECT INTO returns more than one row.</td>
+        </tr>
+        <tr>
+          <td>ZERO_DIVIDE</td>
+          <td>ORA-01476</td>
+          <td>Raised when an attempt is made to divide a number by zero.</td>
+        </tr>
+        <tr>
+          <td>INVALID_CURSOR</td>
+          <td>ORA-01001</td>
+          <td>Triggered when an operation is performed on a cursor that is not open or already closed.</td>
+        </tr>
+        <tr>
+          <td>VALUE_ERROR</td>
+          <td>ORA-06502</td>
+          <td>Occurs when there is a conversion error, or assignment to a variable fails due to size mismatch.</td>
+        </tr>
+        <tr>
+          <td>LOGIN_DENIED</td>
+          <td>ORA-01017</td>
+          <td>Raised when login credentials are invalid.</td>
+        </tr>
+        <tr>
+          <td>STORAGE_ERROR</td>
+          <td>ORA-06500</td>
+          <td>Occurs when PL/SQL runs out of memory or storage.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>🧾 Example: Using <code>NO_DATA_FOUND</code></h2>
+    <pre><code>DECLARE
+  v_name emp.ename%TYPE;
+BEGIN
+  SELECT ename INTO v_name FROM emp WHERE empno = 9999;
+  DBMS_OUTPUT.PUT_LINE('Employee Name: ' || v_name);
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+    DBMS_OUTPUT.PUT_LINE('No employee found with that ID.');
+END;
+    </code></pre>
+    <p><strong>Explanation:</strong> In this case, if the <code>emp</code> table doesn't have a record with <code>empno = 9999</code>, the predefined exception <code>NO_DATA_FOUND</code> will be raised and caught in the <code>EXCEPTION</code> block.</p>
+  </section>
+
+  <section>
+    <h2>🧾 Example: Using <code>ZERO_DIVIDE</code></h2>
+    <pre><code>DECLARE
+  a NUMBER := 10;
+  b NUMBER := 0;
+  c NUMBER;
+BEGIN
+  c := a / b;
+  DBMS_OUTPUT.PUT_LINE('Result: ' || c);
+EXCEPTION
+  WHEN ZERO_DIVIDE THEN
+    DBMS_OUTPUT.PUT_LINE('Cannot divide by zero.');
+END;
+    </code></pre>
+    <p><strong>Explanation:</strong> This code tries to divide 10 by 0, which will cause the <code>ZERO_DIVIDE</code> exception to be raised and handled appropriately.</p>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <p><strong>For Example 1:</strong></p>
+    <pre><code>No employee found with that ID.</code></pre>
+
+    <p><strong>For Example 2:</strong></p>
+    <pre><code>Cannot divide by zero.</code></pre>
+  </section>
+
+</body>
+</html>

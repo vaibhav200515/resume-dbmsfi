@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL MINUS</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #121213;
+      color: #333;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.intro {
+      padding: 40px;
+      font-size: 1.2rem;
+      background-color: #eafaf1;
+      border-left: 6px solid #0899fa;
+    }
+
+    pre {
+      background: #ecf0f1;
+      padding: 15px;
+      border-left: 5px solid #0796f6;
+      margin: 15px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0b9bfc;
+      color: white;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+
+    tbody tr:hover {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SQL MINUS</h1>
+
+  <section class="intro">
+    <h2>📌 Introduction</h2>
+    <p>The <strong>MINUS</strong> operator in SQL returns the rows from the first <code>SELECT</code> query that are not present in the second <code>SELECT</code> query.</p>
+    <p>This is useful when you want to find data that exists in one dataset but not in another.</p>
+    <p>The number of columns and their data types must match in both <code>SELECT</code> queries.</p>
+    <p><strong>Note:</strong> Some database systems like MySQL do not support <code>MINUS</code>, but alternatives like <code>LEFT JOIN</code> with <code>WHERE IS NULL</code> or <code>NOT IN</code> can be used instead.</p>
+  </section>
+
+  <section>
+    <h2>📘 Syntax</h2>
+    <pre><code>SELECT column1, column2, ...
+FROM table1
+MINUS
+SELECT column1, column2, ...
+FROM table2;</code></pre>
+  </section>
+
+  <section>
+    <h2>🧾 Example: Students in Math but not in Science</h2>
+    <pre><code>SELECT student_id FROM course_math
+MINUS
+SELECT student_id FROM course_science;</code></pre>
+
+    <h3>✅ Explanation</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Clause</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>SELECT student_id FROM course_math</td><td>Selects all student IDs enrolled in the math course</td></tr>
+        <tr><td>MINUS</td><td>Removes student IDs also found in the second query (science course)</td></tr>
+        <tr><td>SELECT student_id FROM course_science</td><td>Selects all student IDs enrolled in the science course</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>🖥️ Output</h2>
+    <p>Consider the following data:</p>
+
+    <h3>course_math</h3>
+    <table>
+      <thead>
+        <tr><th>student_id</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>101</td></tr>
+        <tr><td>102</td></tr>
+        <tr><td>103</td></tr>
+      </tbody>
+    </table>
+
+    <h3>course_science</h3>
+    <table>
+      <thead>
+        <tr><th>student_id</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>102</td></tr>
+        <tr><td>103</td></tr>
+        <tr><td>104</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Result</h3>
+    <table>
+      <thead>
+        <tr><th>student_id</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>101</td></tr>
+      </tbody>
+    </table>
+
+    <p>Only student ID 101 is in <strong>course_math</strong> but not in <strong>course_science</strong>, so it's returned by the <code>MINUS</code> operation.</p>
+  </section>
+
+</body>
+</html>
